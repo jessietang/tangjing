@@ -6,7 +6,7 @@ draft: true
 
 # 链接
 
-[我是百度](https://www.baidu.com "百度")
+markdown 语法可参考[markdown 在线编辑器](http://mdeditor.com "markdown在线编辑器")
 
 # 代码
 
