@@ -1,10 +1,10 @@
 baseURL: https://example.com
 languageCode: en-us
 defaultContentLanguage: en
-title: Cupper
+title: tangjing
 theme: cupper-hugo-theme
 googleAnalytics: UA-123456789-1
-disqusShortname: yourdiscussshortname
+disqusShortname: jessietang
 enableGitInfo: true
 
 taxonomies:
@@ -17,9 +17,9 @@ imaging:
   quality: 99
 
 params:
-  description: An accessibility-friendly Hugo theme, ported from the [original Cupper](https://github.com/ThePacielloGroup/cupper) project.
-  homeMetaContent: An accessibility-friendly Hugo theme, ported from the original Cupper project.
-  footer: Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/).
+  description: 2年RN，3年前端。
+  homeMetaContent: tangjing's blogs.
+  footer: Copyright@1994-2020  唐静<br/>Supported by [Hugo](https://gohugo.io/). <br/>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: Jan 2, 2006
   codePenUser: someUser

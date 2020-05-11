@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on tangjing</title>
+    <link>https://example.com/post/</link>
+    <description>Recent content in Posts on tangjing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Apr 2020 17:29:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Markdown Post</title>
+      <link>https://example.com/markdown-post/</link>
+      <pubDate>Wed, 29 Apr 2020 17:29:26 +0800</pubDate>
+      
+      <guid>https://example.com/markdown-post/</guid>
+      <description>markdown</description>
+    </item>
+    
+  </channel>
+</rss>
