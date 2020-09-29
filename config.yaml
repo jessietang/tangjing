@@ -2,10 +2,11 @@ baseURL: https://example.com
 languageCode: en-us
 defaultContentLanguage: en
 title: tangjing
-theme: cupper-hugo-theme
+theme: hello-friend-ng
 googleAnalytics: UA-123456789-1
 disqusShortname: jessietang
 enableGitInfo: true
+copyright: 唐静  1994-2020
 
 taxonomies:
   tag: tags
@@ -17,16 +18,20 @@ imaging:
   quality: 99
 
 params:
-  description: 2年RN，3年前端。
-  homeMetaContent: tangjing's blogs.
-  footer: Copyright@1994-2020  唐静<br/>Supported by [Hugo](https://gohugo.io/). <br/>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
-  # For more date formats see https://gohugo.io/functions/format/
-  dateFormat: Jan 2, 2006
-  codePenUser: someUser
-  katex: true
+  homeSubtitle: 2年RN，3年前端。
+  # keywords: 123 456 789
+  # description: "2年RN，3年前端。"
+  # footer: Copyright@1994-2020  唐静<br/>Supported by [Hugo](https://gohugo.io/). <br/>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
+  # # For more date formats see https://gohugo.io/functions/format/
+  # dateFormat: Jan 2, 2006
+  # codePenUser: someUser
+  # katex: true
+  # logo:
+  #   -logoText: $ cd /home/
+  #   -logoHomeLink: /
 
 menu:
-  nav:
+  main:
     - name: Home
       url: /
       weight: 1

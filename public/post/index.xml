@@ -6,18 +6,88 @@
     <description>Recent content in Posts on tangjing</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Apr 2020 17:29:26 +0800</lastBuildDate>
+    <copyright>唐静  1994-2020</copyright>
+    <lastBuildDate>Mon, 28 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Markdown Post</title>
+      <title>算法的一些基础知识</title>
+      <link>https://example.com/%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>时间复杂度和空间复杂度  时间复杂度：一个算法的时间复杂度反映了程序运行从开始到结束所需要的时间。把算法中基本操作重复执行的次数（频度）作为算法的时间复杂度。 没有循环语句，记作 O(1),也称为常数阶。只有一重循环，则算法的基本操作的执行频度与问题规模 n 呈线性增大关系，记作 O（n），也叫线性阶。 空间复杂度：一个程序的空间复杂度是指运行完一个程序所需内存的大小。利用程序的空间复杂度，可以对程序的运行所需要的内存多少有个预先估计。 一个程序执行时除了需要存储空间和存储本身所使用的指令、常数、变量和输入数据外，还需要一些对数据进行操作的工作单元和存储一些为现实计算所需信息的辅助空间。 数据结构即数据元素相互之间存在的一种和多种特定的关系集合。 一般你可以从两个维度来理解它，逻辑结构和存储结构。 简单的来说逻辑结构就是数据之间的关系，逻辑结构大概统一的可以分成两种：线性结构、非线性结构。 线性结构：是一个有序数据元素的集合。 其中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的。 常用的线性结构有: 栈，队列，链表，线性表。 非线性结构：各个数据元素不再保持在一个线性序列中，每个数据元素可能与零个或者多个其他数据元素发生联系。 常见的非线性结构有 二维数组，树等。  </description>
+    </item>
+    
+    <item>
+      <title>RN使用react-navigation底部tab切换触发相应事件</title>
+      <link>https://example.com/rn%E5%BA%95%E9%83%A8tab%E5%88%87%E6%8D%A2%E5%8A%A0%E8%BD%BD%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Fri, 24 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/rn%E5%BA%95%E9%83%A8tab%E5%88%87%E6%8D%A2%E5%8A%A0%E8%BD%BD%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE/</guid>
+      <description>在rn实际开发场景中遇到很多这种需求：主页面，底部是react-navigation实现的底部tab栏。在使用应用的过程中，可进行切换。但是，在切换的时候，需要触发切换这个事件，在这个事件里面，去执行其他时间（例如：请求最新的个人信息数据、或者最新的消息数据等等）
+解决这类问题，大致就是网上查阅，翻翻文档。最后把我自己实际开发中用到的两种解决方案附上，以做记录：
+ 完全使用hook：首次进入该页面时就会触发。后面再次进入的时候，也会触发。首次进入该screen不需要单独请求数据。  import { useFocusEffect, useIsFocused } from &#39;react-navigation-hooks&#39; import React, { useCallback, useEffect, useState } from &#39;react&#39; useFocusEffect( useCallback(() =&amp;gt; { console.log(&#39;screen takes focus&#39;) doRequest(); return () =&amp;gt; console.debug(&#39;screen loses focus&#39;) }, []) )  不使用hook：用didFocus来进行监听，首次进入该页面时，不会触发。后面再进入的时候，会触发。所以这种模式，首次进入该screen需要单独请求数据。  // 首次进入需要单独请求数据 useEffect(()=&amp;gt;{ console.log(&#39;第一进入触发&#39;) doRequest(); },[]) useEffect(() =&amp;gt; { console.log(&#39;第一进入触发&#39;) const _navListener = props.navigation.addListener(&#39;didFocus&#39;, () =&amp;gt; { console.log(&#39;后面再进入触发&#39;) doRequest(); }); return () =&amp;gt; { _navListener.remove(); }; }, []);  </description>
+    </item>
+    
+    <item>
+      <title>mac下全局配置adb环境</title>
+      <link>https://example.com/mac%E4%B8%8B%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AEadb%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/mac%E4%B8%8B%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AEadb%E7%8E%AF%E5%A2%83/</guid>
+      <description>前言 adb的全称为Android Debug Bridge，就是起到调试桥的作用。通过adb我们可以在IDE中通过DDMS来调试Android程序，其实也就是debug工具。
+但是我们在MAC下安装完JDK和Android studio以后，我们在命令行执行这个命令，会提示这个错误： adb: command not found
+Android adb环境设置  进入当前用户home目录 打开terminal终端，默认就是home根目录。如果不确认，可以在命令行输入： echo $HOME  输出的内容一般是类似这样的信息：/Users/你自己的用户名 也可以使用以下命令，查看当前所在目录： pwd
+  创建.bash_profile文件 touch .bash_profile
+  打开.bash_profile文件 open -e .bash_profile
+  编辑.bash_profile文件。注意：/Users/你自己的用户名 要换成你自己的home目录
+  export ANDROID_HOME=/Users/你自己的用户名/Library/Android/sdk export PATH=${PATH}:${ANDROID_HOME}/tools export PATH=${PATH}:${ANDROID_HOME}/platform-tools    编译.bash_profile source .bash_profile
+  至此adb环境已经搭建成功，可以输入以下命令做个验证： adb version 会输出类似以下信息：
+  Android Debug Bridge version 1.0.41 Version 29.0.6-6198805 Installed as /Users/你自己的用户名/Library/Android/sdk/platform-tools/adb  </description>
+    </item>
+    
+    <item>
+      <title>markdown语法入门级使用</title>
       <link>https://example.com/markdown-post/</link>
-      <pubDate>Wed, 29 Apr 2020 17:29:26 +0800</pubDate>
+      <pubDate>Sun, 26 Apr 2020 11:04:20 +0800</pubDate>
       
       <guid>https://example.com/markdown-post/</guid>
-      <description>markdown</description>
+      <description>链接 markdown 语法可参考markdown 在线编辑器
+代码 少量代码 test.tangjing.com是个啥？
+代码块 jessieatng.github.io jessieatng.github.io jessieatng.github.io jessieatng.github.io jessieatng.github.io  列表  吃饭 睡觉 打豆豆  引用  生命诚可贵，爱情价更高
+ 若为自由故，二者皆可抛
+  图片 [my-logo.png]: https://upload-images.jianshu.io/upload_images/13623636-6d878e3d3ef63825.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240 &amp;ldquo;my-logo&amp;rdquo; ![my-logo.png]
+分割线 我
+ 你
+ 他
+ 其他 强调字体 我是倾斜的。 我是 strong 加粗的。
+转义 \ * + - ~
+删除线 我有删除线
+表格    123 234 345     abc bcd cde   abc bcd cde   abc bcd cde    </description>
+    </item>
+    
+    <item>
+      <title>RN运行报错日志记录集</title>
+      <link>https://example.com/rn%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/</link>
+      <pubDate>Sun, 26 Apr 2020 11:04:20 +0800</pubDate>
+      
+      <guid>https://example.com/rn%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99/</guid>
+      <description>整理了这两年开发rn过程中，记录了的一些，遇到的运行相关的问题。
+  友盟iOS13报错([_LSDefaults sharedInstance] unrecognized selector sent to class)
+  Could not launch “XXX” Domain IDEDebugSessionErrorDomain
+  Cannot fit requested classes in a single dex file
+  react-native android报错找不到相应模块解决办法
+  ios连接真机调试的时候打不开debug模式
+  RN0.57打包报错，Execution failed for task ‘xxx，verifyReleaseResources&amp;rsquo;
+  执行react-native run-android报错
+  FileProvider冲突报错(现有的代码拉下来就会有这个问题，因为加了下载更新相关的代码导致)
+  react native android studio 报错R文件丢失
+  IOS打包报重复引用问题
+  react native android4.4开启debug模式无效问题
+  react-native run-android运行完，开启debug模式metro bundle报错</description>
     </item>
     
   </channel>

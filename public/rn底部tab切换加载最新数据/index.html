@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="在rn实际开发场景中遇到很多这种需求：主页面，底部是react-navigation实现的底部tab栏。在使用应用的过程中，可进行切换。但是，在切换的时候，需要触发切换这个事件，在这个事件里面，去执行其他时间（例如：请求最新的个人信息数据、或者最新的消息数据等等）
+解决这类问题，大致就是网上查阅，翻翻文档。最后把我自己实际开发中用到的两种解决方案附上，以做记录：
+ 完全使用hook：首次进入该页面时就会触发。后面再次进入的时候，也会触发。首次进入该screen不需要单独请求数据。  import { useFocusEffect, useIsFocused } from &#39;react-navigation-hooks&#39; import React, { useCallback, useEffect, useState } from &#39;react&#39; useFocusEffect( useCallback(() =&amp;gt; { console.log(&#39;screen takes focus&#39;) doRequest(); return () =&amp;gt; console.debug(&#39;screen loses focus&#39;) }, []) )  不使用hook：用didFocus来进行监听，首次进入该页面时，不会触发。后面再进入的时候，会触发。所以这种模式，首次进入该screen需要单独请求数据。  // 首次进入需要单独请求数据 useEffect(()=&amp;gt;{ console.log(&#39;第一进入触发&#39;) doRequest(); },[]) useEffect(() =&amp;gt; { console.log(&#39;第一进入触发&#39;) const _navListener = props.navigation.addListener(&#39;didFocus&#39;, () =&amp;gt; { console.log(&#39;后面再进入触发&#39;) doRequest(); }); return () =&amp;gt; { _navListener.remove(); }; }, []);  " />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://example.com/rn%E5%BA%95%E9%83%A8tab%E5%88%87%E6%8D%A2%E5%8A%A0%E8%BD%BD%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE/" />
+
+
+    <title>
+        
+            RN使用react-navigation底部tab切换触发相应事件 :: tangjing 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
+
+
+
+
+
+
+<meta itemprop="name" content="RN使用react-navigation底部tab切换触发相应事件">
+<meta itemprop="description" content="在rn实际开发场景中遇到很多这种需求：主页面，底部是react-navigation实现的底部tab栏。在使用应用的过程中，可进行切换。但是，在切换的时候，需要触发切换这个事件，在这个事件里面，去执行其他时间（例如：请求最新的个人信息数据、或者最新的消息数据等等）
+解决这类问题，大致就是网上查阅，翻翻文档。最后把我自己实际开发中用到的两种解决方案附上，以做记录：
+ 完全使用hook：首次进入该页面时就会触发。后面再次进入的时候，也会触发。首次进入该screen不需要单独请求数据。  import { useFocusEffect, useIsFocused } from &#39;react-navigation-hooks&#39; import React, { useCallback, useEffect, useState } from &#39;react&#39; useFocusEffect( useCallback(() =&gt; { console.log(&#39;screen takes focus&#39;) doRequest(); return () =&gt; console.debug(&#39;screen loses focus&#39;) }, []) )  不使用hook：用didFocus来进行监听，首次进入该页面时，不会触发。后面再进入的时候，会触发。所以这种模式，首次进入该screen需要单独请求数据。  // 首次进入需要单独请求数据 useEffect(()=&gt;{ console.log(&#39;第一进入触发&#39;) doRequest(); },[]) useEffect(() =&gt; { console.log(&#39;第一进入触发&#39;) const _navListener = props.navigation.addListener(&#39;didFocus&#39;, () =&gt; { console.log(&#39;后面再进入触发&#39;) doRequest(); }); return () =&gt; { _navListener.remove(); }; }, []);  ">
+<meta itemprop="datePublished" content="2020-07-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-07-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="65">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="RN使用react-navigation底部tab切换触发相应事件"/>
+<meta name="twitter:description" content="在rn实际开发场景中遇到很多这种需求：主页面，底部是react-navigation实现的底部tab栏。在使用应用的过程中，可进行切换。但是，在切换的时候，需要触发切换这个事件，在这个事件里面，去执行其他时间（例如：请求最新的个人信息数据、或者最新的消息数据等等）
+解决这类问题，大致就是网上查阅，翻翻文档。最后把我自己实际开发中用到的两种解决方案附上，以做记录：
+ 完全使用hook：首次进入该页面时就会触发。后面再次进入的时候，也会触发。首次进入该screen不需要单独请求数据。  import { useFocusEffect, useIsFocused } from &#39;react-navigation-hooks&#39; import React, { useCallback, useEffect, useState } from &#39;react&#39; useFocusEffect( useCallback(() =&gt; { console.log(&#39;screen takes focus&#39;) doRequest(); return () =&gt; console.debug(&#39;screen loses focus&#39;) }, []) )  不使用hook：用didFocus来进行监听，首次进入该页面时，不会触发。后面再进入的时候，会触发。所以这种模式，首次进入该screen需要单独请求数据。  // 首次进入需要单独请求数据 useEffect(()=&gt;{ console.log(&#39;第一进入触发&#39;) doRequest(); },[]) useEffect(() =&gt; { console.log(&#39;第一进入触发&#39;) const _navListener = props.navigation.addListener(&#39;didFocus&#39;, () =&gt; { console.log(&#39;后面再进入触发&#39;) doRequest(); }); return () =&gt; { _navListener.remove(); }; }, []);  "/>
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-07-24 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://example.com" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">hello</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://example.com/">Home</a></li><li><a href="https://example.com/post/">Blog</a></li><li><a href="https://example.com/tags/">Tags</a></li><li><a href="https://example.com/about/">About</a></li><li><a href="https://example.com/index.xml">RSS</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://example.com/rn%E5%BA%95%E9%83%A8tab%E5%88%87%E6%8D%A2%E5%8A%A0%E8%BD%BD%E6%9C%80%E6%96%B0%E6%95%B0%E6%8D%AE/">RN使用react-navigation底部tab切换触发相应事件</a></h2>
+
+            
+
+            
+
+            <div class="post-content">
+                <p>在rn实际开发场景中遇到很多这种需求：主页面，底部是react-navigation实现的底部tab栏。在使用应用的过程中，可进行切换。但是，在切换的时候，需要触发切换这个事件，在这个事件里面，去执行其他时间（例如：请求最新的个人信息数据、或者最新的消息数据等等）</p>
+<p>解决这类问题，大致就是网上查阅，翻翻文档。最后把我自己实际开发中用到的两种解决方案附上，以做记录：</p>
+<ol>
+<li>完全使用hook：首次进入该页面时就会触发。后面再次进入的时候，也会触发。首次进入该screen不需要单独请求数据。</li>
+</ol>
+<pre><code>import { useFocusEffect, useIsFocused } from 'react-navigation-hooks'
+import React, { useCallback, useEffect, useState } from 'react'
+
+useFocusEffect(
+    useCallback(() =&gt; {
+      console.log('screen takes focus')
+      doRequest();    
+      
+      return () =&gt; console.debug('screen loses focus')
+    }, [])
+)
+</code></pre>
+<ol start="2">
+<li>不使用hook：用didFocus来进行监听，首次进入该页面时，不会触发。后面再进入的时候，会触发。所以这种模式，首次进入该screen需要单独请求数据。</li>
+</ol>
+<pre><code>// 首次进入需要单独请求数据
+useEffect(()=&gt;{
+    console.log('第一进入触发')
+    doRequest();    
+},[])
+
+useEffect(() =&gt; {
+    console.log('第一进入触发')
+    const _navListener = props.navigation.addListener('didFocus', () =&gt; {
+      console.log('后面再进入触发')
+      doRequest();
+    });
+
+    return () =&gt; {
+      _navListener.remove();
+    };
+  }, []);
+</code></pre>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            
+                <span>唐静  1994-2020</span>
+            <span><a href="https://example.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-123456789-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+    </body>
+</html>
